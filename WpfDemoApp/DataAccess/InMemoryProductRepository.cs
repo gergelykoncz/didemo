@@ -2,7 +2,7 @@
 
 namespace WpfDemoApp.DataAccess
 {
-    public class InMemoryProductRepository
+    public class InMemoryProductRepository : IProductRepository
     {
         private List<Product> _inner = new List<Product>()
         {

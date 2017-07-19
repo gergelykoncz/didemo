@@ -21,11 +21,13 @@ namespace WpfDemoApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly IProductRepository repository;
+
+        public MainWindow(IProductRepository repository)
         {
             InitializeComponent();
-            InMemoryProductRepository inMemoryRepo = new InMemoryProductRepository();
-            this.myGrid.ItemsSource = inMemoryRepo.GetAll();
+            this.repository = repository;
+            this.myGrid.ItemsSource = repository.GetAll();
         }
     }
 }
