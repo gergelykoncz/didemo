@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,10 +15,15 @@ namespace WpfDemoApp
     /// </summary>
     public partial class App : Application
     {
+        private IKernel kernel;
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            kernel = new StandardKernel();
+            kernel.Load(new IoCRegistration());
+
             base.OnStartup(e);
-            Current.MainWindow = new MainWindow(new InMemoryProductRepository());
+            Current.MainWindow = kernel.Get<MainWindow>(); // new MainWindow(new InMemoryProductRepository());
             Current.MainWindow.Show();
         }
     }
