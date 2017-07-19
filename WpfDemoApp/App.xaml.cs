@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfDemoApp.DataAccess;
 
 namespace WpfDemoApp
 {
@@ -16,7 +17,7 @@ namespace WpfDemoApp
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            Current.MainWindow = new MainWindow();
+            Current.MainWindow = new MainWindow(new InMemoryProductRepository());
             Current.MainWindow.Show();
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace WpfDemoApp.DataAccess
 {
-    interface IProductRepository
+    public interface IProductRepository
     {
         System.Collections.Generic.IEnumerable<Product> GetAll();
     }
